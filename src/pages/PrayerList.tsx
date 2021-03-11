@@ -36,7 +36,7 @@ export const PrayerList = (props: PrayerListProps) => {
                 let val = JSON.parse(value)
                 setPrayers(val)
             }else{
-               fetch(`http://www.ujet.in/docs/${prayerDataFile}`)
+               fetch(`https://novena-prayers.herokuapp.com/docs/${prayerDataFile}`)
                .then(response => response.json())
                 .then(response => {
                     let val = JSON.stringify(response)

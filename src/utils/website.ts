@@ -21,7 +21,7 @@ export const getWebsiteData = () => {
         Storage.get({key: websiteDataFile}).then(({value}) => {
             if (value === null) { 
 
-                fetch(`http://www.ujet.in/docs/${websiteDataFile}`)
+                fetch(`https://novena-prayers.herokuapp.com/docs/${websiteDataFile}`)
                 .then(response => response.json())
                 .then((response) => {
                     let val = JSON.stringify(response)

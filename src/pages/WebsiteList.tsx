@@ -63,7 +63,7 @@ export const WebsiteList = (props: WebsiteListProps ) => {
                 let val = JSON.parse(value)
                 setWebsiteData(val)
              }else{
-            fetch(`http://www.ujet.in/docs/${websiteDataFile}`) 
+            fetch(`https://novena-prayers.herokuapp.com/docs/${websiteDataFile}`) 
             .then(response => response.json())
             .then((response) => {
                 let val = JSON.stringify(response)

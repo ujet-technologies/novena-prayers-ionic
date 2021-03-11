@@ -19,7 +19,7 @@ export const getPrayers = () => {
 
         Storage.get({key: prayerDataFile}).then(({value}) => {
             if (value === null) {
-                fetch(`http://www.ujet.in/docs/${prayerDataFile}`)
+                fetch(`https://novena-prayers.herokuapp.com/docs/${prayerDataFile}`)
                 .then(response => response.json())
                     .then(response => {
                         let val = JSON.stringify(response)
@@ -51,7 +51,7 @@ export const downloadPrayer = (prayer: Prayer) => {
 
             if (value !== null) {
 
-                fetch(`http://www.ujet.in/docs/${prayer.file}`, )
+                fetch(`https://novena-prayers.herokuapp.com/docs/${prayer.file}`, )
                 .then(response => response.blob())
                 .then(response => {
                     let reader = new FileReader()
