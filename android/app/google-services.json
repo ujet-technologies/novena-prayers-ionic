@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1033088396351",
+    "project_id": "novenas-prayers-videos",
+    "storage_bucket": "novenas-prayers-videos.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1033088396351:android:3c271fb27b198a714c5c8a",
+        "android_client_info": {
+          "package_name": "in.ujet.novenasprayersvideos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1033088396351-9vcu99046sgu563ehbko7407sun59spp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8gWiEMGyM5IJisHsF08CeBvA2q6j6rSk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1033088396351-9vcu99046sgu563ehbko7407sun59spp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

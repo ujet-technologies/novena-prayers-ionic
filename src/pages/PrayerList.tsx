@@ -54,16 +54,16 @@ export const PrayerList = (props: PrayerListProps) => {
     
     const handleDelete = (pfile: string) =>{
         Storage.get({key: pfile}).then(({value}) => {
-            console.log(typeof(value))
+            //console.log(typeof(value))
             if (value === null) {
                 setToastMessage( pfile +`\n is not downloaded in your device`)
                 setShowToast(true)
-                console.log('No File')
+                //console.log('No File')
             }else{                
                 Storage.remove({key: pfile})
                 setToastMessage( '"Deleted" '+pfile +`\n is now not in your device`)
                 setShowToast(true)
-                console.log(pfile)
+                //console.log(pfile)
 
             }
         })
@@ -79,7 +79,7 @@ export const PrayerList = (props: PrayerListProps) => {
             <IonGrid>
                 {prayers.map((prayer) => { 
                     return (
-                        <IonRow style={{ width: '100%' }}>
+                        <IonRow key = {prayer.id} style={{ width: '100%' }}>
                             <IonCol size='9'>
                                 <IonLabel onClick={() => openPrayer(prayer)} >{prayer.name}</IonLabel>
                             </IonCol>
