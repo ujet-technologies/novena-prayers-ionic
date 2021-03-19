@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { RouteComponentProps } from 'react-router'
-import { IonItem, IonLabel, IonList, IonText, IonToast } from '@ionic/react';
+import { IonItem, IonLabel, IonList, IonLoading, IonText, IonToast } from '@ionic/react';
 import { Plugins } from '@capacitor/core';
 import { Layout } from './Layout';
 import { getWebsiteData } from '../utils/website';
@@ -28,6 +28,7 @@ export const WebsiteList = (props: WebsiteListProps ) => {
     const [showToast, setShowToast] = useState(false)
     const [toastMessage, setToastMessage] = useState('Howdy')
     const [websiteData, setWebsiteData] = useState<Site[]>([])
+    const [loading, setLoading] = useState(false)
 
     const openWebsite = (site: Site) => {
         if (site.website !== null) {
@@ -56,12 +57,15 @@ export const WebsiteList = (props: WebsiteListProps ) => {
 
     useEffect(()  => {
 
+        setLoading(true)
+
         let websiteDataFile = 'website-data.json'
 
         Storage.get({key: websiteDataFile}).then(({value}) => {
             if (value !== null) { 
                 let val = JSON.parse(value)
                 setWebsiteData(val)
+                setLoading(false)
              }else{
             fetch(`https://novena-prayers.herokuapp.com/docs/${websiteDataFile}`) 
             .then(response => response.json())
@@ -69,14 +73,15 @@ export const WebsiteList = (props: WebsiteListProps ) => {
                 let val = JSON.stringify(response)
                 Storage.set({key: websiteDataFile, value: val})
                 setWebsiteData(response)
+                setLoading(false)
             })
         }
     }) 
-    
     }, [])
          
     return(
         <Layout title="Youtube" {...props}>
+            <IonLoading isOpen={loading} /> 
             <IonList>   
                 {websiteData.map((site: Site) =>{
                     return(

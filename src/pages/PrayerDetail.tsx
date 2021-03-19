@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { RouteComponentProps } from 'react-router'
-import { IonLoading, IonContent, IonButton, IonIcon } from '@ionic/react'
+import { IonLoading, IonContent, IonButton, IonIcon, IonRange } from '@ionic/react'
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack' 
 import { Layout } from './Layout' 
 import { Prayer, getPrayers, downloadPrayer } from '../utils/prayer'
@@ -90,10 +90,14 @@ export const PrayerDetail = (props: PrayerDetailProps) => {
         <Layout title={title} {...props}>
             <IonLoading isOpen={loading} />
             <div  style={ { textAlign: "center",border: "2px solid blue" }}>
-            <IonButton size="small" shape="round" fill="outline" onClick={zoomIn}><IonIcon slot='icon-only' icon={expandSharp} /></IonButton>
-            <IonButton size="small" shape="round" fill="outline" onClick={zoomOut}><IonIcon slot='icon-only' icon={contractSharp} /></IonButton>                    
+                <IonRange value = {scale}  min = {1} max = {3} step = {.2}  color = "tertiary" onIonChange = {e => setScale(e.detail.value as number)} >
+                <IonIcon size = 'small' slot='end' icon={expandSharp} />
+                <IonIcon size = 'small' slot="start" icon={contractSharp} />
+                </IonRange>
+            {/* <IonButton size="small" shape="round" fill="outline" onClick={zoomIn}><IonIcon slot='icon-only' icon={expandSharp} /></IonButton>
+            <IonButton size="small" shape="round" fill="outline" onClick={zoomOut}><IonIcon slot='icon-only' icon={contractSharp} /></IonButton>                     */}
             </div>
-            <IonContent scrollX={true} scrollY={true}>                
+            <IonContent scrollX={true} scrollY={true}>   
                 <Document file={prayerPDF} onLoadSuccess={prayerPDFLoadSuccess}>
                     {renderPages().map(item => item)}
                 </Document>

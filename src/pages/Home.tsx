@@ -77,7 +77,17 @@ const Home = (props: HomeProps) => {
           position={'middle'} 
           color={'tertiary'}
           onDidDismiss={() => setToastMessage("")} 
-          duration={950} />
+          //duration={950}
+          buttons={[
+            {
+              side: 'end',
+              text: 'Ok',
+              role: 'cancel',
+              handler: () => { 
+                setShowToast(false)
+              }
+            }
+          ]} />
         {/* <IonToast isOpen={showToast} message={toastMessage} position={'middle'} color={toastColor}  onDidDismiss={() => setShowToast(false)} 
         buttons={[
           {

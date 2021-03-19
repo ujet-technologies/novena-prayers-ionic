@@ -26,7 +26,7 @@ export const Layout: React.FC<LayoutProps> = (props: any) => {
                     <IonTitle>{props.title}</IonTitle>
                     <IonButtons slot='end'>
                         <IonButton onClick={(e) => {e.preventDefault(); props.history.push('/prayers');refreshPage()}}>
-                            <IonIcon slot='icon-only' icon={bookOutline} />
+                            <IonIcon slot='icon-only' src = "/assets/prayer.svg" />
                         </IonButton>
                     </IonButtons>
         </IonToolbar>
